@@ -33,6 +33,7 @@ This project was built using HTML, CSS, and JavaScript.
 - Recommendations Page  
 - About Page  
 - Contact Page  
+- Book Selector
 
 ---
 
