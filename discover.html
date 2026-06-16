@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discover Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./CSS/styles.css" rel="stylesheet">
 </head>
 <body>
     <h1>Find a Book</h1>
@@ -33,40 +34,80 @@
     <a class="nav-link" href="./contact.html">Contact</a>
   </li>
 </ul><br>
-    <div class="search-container">
-  <input type="text" id="searchInput" placeholder="Search books by title or author...">
-  <button type="submit">Search</button>
 
-  <h2>Browse by Genre</h2>
+<div class="container mt-4">
 
-<div class="genre-grid">
-
-  <div class="genre-card">
-    <img src="images/fantasy.jpg" alt="Fantasy">
-    <p>Fantasy</p>
-  </div>
-  <div class="genre-card">
-    <img src="images/scifi.jpg" alt="Fantasy">
-    <p>Sci-Fi</p>
+  <div class="search-container mb-4">
+    <input
+      type="text"
+      id="searchInput"
+      class="form-control"
+      placeholder="Search books by title or author..."
+    >
+    <button type="submit" class="btn btn-primary mt-2">Search</button>
   </div>
 
-  <div class="genre-card">
-    <img src="images/mystery.jpg" alt="Mystery">
-    <p>Mystery & Thriller</p>
-  </div>
-  <div class="genre-card">
-    <img src="images/ya.jpg" alt="Romance">
-    <p>Young Adult</p>
-  </div>
-  <div class="genre-card">
-    <img src="images/memoir.jpg" alt="Romance">
-    <p>Memoir and Autobiography</p>
+  <h2 class="mb-4">Browse by Genre</h2>
+
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+    <div class="col">
+      <div class="card h-100 text-center">
+        <img src="images/fantasy.jpg" class="card-img-top" alt="Fantasy">
+        <div class="card-body">
+          <p class="card-text">Fantasy</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card h-100 text-center">
+        <img src="images/scifi.jpg" class="card-img-top" alt="Sci-Fi">
+        <div class="card-body">
+          <p class="card-text">Sci-Fi</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card h-100 text-center">
+        <img src="images/mystery.jpg" class="card-img-top" alt="Mystery">
+        <div class="card-body">
+          <p class="card-text">Mystery & Thriller</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card h-100 text-center">
+        <img src="images/ya.jpg" class="card-img-top" alt="Young Adult">
+        <div class="card-body">
+          <p class="card-text">Young Adult</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card h-100 text-center">
+        <img src="images/memoir.jpg" class="card-img-top" alt="Memoir and Autobiography">
+        <div class="card-body">
+          <p class="card-text">Memoir & Autobiography</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card h-100 text-center">
+        <img src="images/classic.jpg" class="card-img-top" alt="Classics">
+        <div class="card-body">
+          <p class="card-text">Classics</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 
-  <div class="genre-card">
-    <img src="images/classic.jpg" alt="Classics">
-    <p>Classics</p>
-  </div>
+</div>
 
 </div>
 </div>
