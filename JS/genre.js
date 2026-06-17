@@ -10,7 +10,7 @@ const filteredBooks = books.filter(book => book.genre === genre);
 container.innerHTML = filteredBooks.map(book => `
     <div class="col">
         <div class="card h-100 text-center shadow-sm">
-            <img src="${book.image}" class="card-img-top">
+            <img src="${book.image}" class="card-img-top book-img">
             <div class="card-body">
                 <h6 class="card-title">${book.title}</h6>
             </div>
