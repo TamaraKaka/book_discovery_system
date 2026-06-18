@@ -11,3 +11,24 @@ genreCards.forEach(card => {
     });
 
 });
+function normalize(str) {
+  return str.trim().toLowerCase();
+}
+const input=document.getElementById("searchInput");
+const searchButton=document.getElementById("searchBtn");
+const container = document.getElementById("booksContainer");
+searchButton.addEventListener('click',()=>{
+const filteredBooks = books.filter(book => normalize(book.author) === normalize(input.value) 
+|| normalize(book.title) === normalize(input.value) );
+container.innerHTML = filteredBooks.map(book => `
+    <div class="col">
+        <div class="card h-100 text-center shadow-sm">
+            <img src="${book.image}" class="card-img-top book-img">
+            <div class="card-body">
+                <h6 class="card-title">${book.title}</h6>
+            </div>
+        </div>
+    </div>
+`).join("")
+}
+);
