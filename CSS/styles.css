@@ -28,3 +28,22 @@
     padding: 2px;
     flex-grow: 1;
 }
+body {
+  background-color: #F5E7C4;
+  color: #3b2f22;
+  font-family: Georgia, serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(0,0,0,0.03) 1px, transparent 1px),
+    radial-gradient(circle at 80% 60%, rgba(0,0,0,0.02) 1px, transparent 1px);
+  background-size: 8px 8px, 12px 12px;
+}
+a{
+    text-decoration: none;
+}
