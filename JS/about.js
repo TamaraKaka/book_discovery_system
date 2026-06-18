@@ -10,14 +10,15 @@ function normalize(str) {
 const book = books.find(book => normalize(book.title) === normalize(title));
 
 container.innerHTML = `
-    <div class="col">
-        <div class="card h-100 text-center shadow-sm">
-            <img src="${book.image}" class="card-img-top book-img">
-            <div class="card-body">
-                <h2 class="card-title">${book.title}</h2>
-                <h3>${book.author}</h3>
-                <h3>Summary: ${book.synopsis}</h3>
-                <h3>Interesting Fact: ${book.fact}</h3>
+    <div>
+        <div >
+            <img src="${book.image}" >
+            <div>
+                <h1 class="card-title">${book.title}</h1>
+                <h2>${book.author}</h2><br>
+                <h3>Summary: </h3><p>${book.synopsis}</p><br>
+                <h3>Interesting Fact: </h3><p>${book.fact}</p>
+                <button>Add To Wishlist</button>
             </div>
         </div>
     </div>

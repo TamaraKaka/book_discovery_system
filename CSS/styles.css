@@ -47,3 +47,23 @@ body::before {
 a{
     text-decoration: none;
 }
+
+/* Inactive tabs */
+.nav-tabs .nav-link {
+  color: #6b4f2a;
+  background-color: #f5e7c4;
+  border-color: #d8c7a3;
+}
+
+/* Hover */
+.nav-tabs .nav-link:hover {
+  color: #3b2f22;
+  background-color: #efe0b8;
+}
+
+/* Active tab */
+.nav-tabs .nav-link.active {
+  color: #3b2f22;
+  background-color: #fdf8ea;
+  border-color: #d8c7a3 #d8c7a3 #fdf8ea;
+}
