@@ -140,8 +140,8 @@ let books=[
   author: "Alex Michaelides",
   genre: "Mystery/Thriller",
   image: "images/books/silent.jpg",
-  synopsis: "An envoy visits a planet where inhabitants have no fixed gender.",
-  fact: "It was groundbreaking for exploring gender fluidity in 1969 literature."
+  synopsis: "A woman stops speaking after murdering her husband, and a psychotherapist is determined to uncover her motive.",
+  fact: "The plot is inspired by the Athenian tragedy Alcestis, while the narrative structure is influenced by Agatha Christie's writing."
     },
 {
   id: 17,
