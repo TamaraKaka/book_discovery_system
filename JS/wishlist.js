@@ -10,19 +10,15 @@ if (wishlistBooks.length === 0) {
     container.innerHTML = "<p>Nothing here. Add books to your wishlist.</p>";
 } else {
     container.innerHTML = wishlistBooks.map(book => `
-        <div class="col-md-4 mb-3">
-            <div class="card h-100">
-                <img src="${book.image}" class="card-img-top" alt="${book.title}">
-                <div class="card-body">
-                    <h5 class="card-title">${book.title}</h5>
-                    <p>${book.author}</p>
-
-                    <a href="about.html?title=${encodeURIComponent(book.title)}"
-                       class="btn btn-primary">
-                       View Book
-                    </a>
-                </div>
+        <div class="col">
+        <a href="about.html?title=${encodeURIComponent(book.title)}">
+        <div class="card h-100 text-center shadow-sm">
+            <img src="${book.image}" class="card-img-top book-img">
+            <div class="card-body">
+                <h6 class="card-title">${book.title}</h6>
             </div>
         </div>
-    `).join("");
+        </a>
+    </div>
+`).join("");
 }

@@ -9,6 +9,8 @@ function normalize(str) {
 }
 const book = books.find(book => normalize(book.title) === normalize(title));
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+const isWishlisted = wishlist.includes(book.title);
+
 function saveWishlist(){
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
 }
@@ -20,14 +22,19 @@ function addToWishlist(title){
 }
 function toggleWishlist(title, button) {
     if (wishlist.includes(title)) {
-        wishlist = wishlist.filter(book => book !== title);
-        button.textContent = "Add to wishlist ♡";
+        wishlist = wishlist.filter(b => b !== title);
     } else {
         wishlist.push(title);
-        button.textContent = "Added to wishlist❤️";
     }
 
     saveWishlist();
+
+    // re-check state after update
+    const isNowWishlisted = wishlist.includes(title);
+
+    button.textContent = isNowWishlisted
+        ? "❤️ Remove from Wishlist"
+        : "♡ Add To Wishlist";
 }
 container.innerHTML = `
 <div class="book-container">
@@ -43,7 +50,9 @@ container.innerHTML = `
         <h3>Interesting Fact:</h3>
         <p>${book.fact}</p>
 
-        <button id="wishlistBtn">Add to wishlist ♡</button>
+        <button id="wishlistBtn">
+        ${isWishlisted ? "❤️ Remove from Wishlist" : "♡ Add To Wishlist"}
+        </button>
     </div>
 </div>
 `;
