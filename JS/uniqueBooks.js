@@ -93,31 +93,54 @@ const books = [
 ];
 
 
-function getNicheBook(genre) {
-    const filtered = books.filter(book => book.genre === genre);
+const result = document.getElementById("result");
+const genreSelect = document.getElementById("genreSelect");
 
-    if (filtered.length === 0) return null;
-
-    const randomIndex = Math.floor(Math.random() * filtered.length);
-    return filtered[randomIndex];
+function getFilteredBooks(genre) {
+    return books.filter(book => book.genre === genre);
 }
-
-document.getElementById("genreSelect").addEventListener("click", () => {
+document.getElementById("spinBtn").addEventListener("click", () => {
     const genre = genreSelect.value;
+    const filtered = getFilteredBooks(genre);
 
-    const book = getNicheBook(genre);
-
-    if (!book) {
+    if (filtered.length === 0) {
         result.innerHTML = "<p>No books found.</p>";
         return;
     }
 
-    result.innerHTML = `
-        <div class="card">
-            <img src="${book.image}" width="150">
-            <h3>${book.title}</h3>
-            <p>${book.author}</p>
-            <p>${book.fact}</p>
-        </div>
-    `;
+    let spinInterval;
+    let spinCount = 0;
+
+    // final book (true result)
+    const finalBook = filtered[Math.floor(Math.random() * filtered.length)];
+
+    spinInterval = setInterval(() => {
+        const randomBook = filtered[Math.floor(Math.random() * filtered.length)];
+
+        result.innerHTML = `
+            <div class="card">
+                <h3>${randomBook.title}</h3>
+                <p>${randomBook.author}</p>
+            </div>
+        `;
+
+        spinCount++;
+
+        // slowdown effect
+        if (spinCount > 20) {
+            clearInterval(spinInterval);
+
+            // final reveal after slight pause
+            setTimeout(() => {
+                result.innerHTML = `
+                    <div class="card final">
+                        <h2>🎉 Your Pick</h2>
+                        <h3>${finalBook.title}</h3>
+                        <p>${finalBook.author}</p>
+                        <p>${finalBook.fact}</p>
+                    </div>
+                `;
+            }, 500);
+        }
+    }, 80);
 });
