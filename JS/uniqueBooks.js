@@ -91,3 +91,33 @@ const books = [
     image: "images/books/dorian-gray.jpg"
   }
 ];
+
+
+function getNicheBook(genre) {
+    const filtered = books.filter(book => book.genre === genre);
+
+    if (filtered.length === 0) return null;
+
+    const randomIndex = Math.floor(Math.random() * filtered.length);
+    return filtered[randomIndex];
+}
+
+document.getElementById("genreSelect").addEventListener("click", () => {
+    const genre = genreSelect.value;
+
+    const book = getNicheBook(genre);
+
+    if (!book) {
+        result.innerHTML = "<p>No books found.</p>";
+        return;
+    }
+
+    result.innerHTML = `
+        <div class="card">
+            <img src="${book.image}" width="150">
+            <h3>${book.title}</h3>
+            <p>${book.author}</p>
+            <p>${book.fact}</p>
+        </div>
+    `;
+});
