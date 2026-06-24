@@ -133,8 +133,8 @@ document.getElementById("spinBtn").addEventListener("click", () => {
             // final reveal after slight pause
             setTimeout(() => {
                 result.innerHTML = `
-                    <div class="card final">
-                        <h2>🎉 Your Pick</h2>
+                    <div class="cardFinal">
+                        <h2> Your Pick</h2>
                         <h3>${finalBook.title}</h3>
                         <p>${finalBook.author}</p>
                         <p>${finalBook.fact}</p>
