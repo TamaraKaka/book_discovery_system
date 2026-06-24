@@ -70,6 +70,10 @@ a{
 #spinBtn{
   background-color: #3b2f22;
    color: #d8c7a3;
-   margin-top: 5px;
+   margin-top: 10px;
    border-radius: 8px;
+}
+#selector{
+  width: 80%;
+  margin-left: 10px;
 }
