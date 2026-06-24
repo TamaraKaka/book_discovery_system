@@ -1,8 +1,12 @@
 const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
-const wishlistBooks = books.filter(book =>
+const allBooks = [...books, ...uniqueBooks];
+
+const wishlistBooks = allBooks.filter(book =>
     wishlist.includes(book.title)
 );
+
+console.log("Matching books:", wishlistBooks);
 
 const container = document.getElementById("wishlistContainer");
 

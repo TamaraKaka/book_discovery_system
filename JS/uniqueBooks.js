@@ -1,4 +1,4 @@
-const books = [
+const uniqueBooks = [
 
    {
     title: "The Goblin Emperor",
@@ -60,7 +60,6 @@ const books = [
     image: "images/books/raven-boys.jpg"
   },
 
-
   {
     title: "The Chronology of Water",
     author: "Lidia Yuknavitch",
@@ -92,14 +91,38 @@ const books = [
   }
 ];
 
-
 const result = document.getElementById("result");
 const genreSelect = document.getElementById("genreSelect");
 
-function getFilteredBooks(genre) {
-    return books.filter(book => book.genre === genre);
+let savedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+function saveWishlist() {
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
 }
+
+function toggleWishlist(title, button) {
+
+    if (savedWishlist.includes(title)) {
+        savedWishlist = savedWishlist.filter(bookTitle => bookTitle !== title);
+    } else {
+        savedWishlist.push(title);
+    }
+
+    saveWishlist();
+
+    const isWishlisted = savedWishlist.includes(title);
+
+    button.textContent = isWishlisted
+        ? "❤️ Remove from Wishlist"
+        : "♡ Add To Wishlist";
+}
+
+function getFilteredBooks(genre) {
+    return uniqueBooks.filter(book => book.genre === genre);
+}
+
 document.getElementById("spinBtn").addEventListener("click", () => {
+
     const genre = genreSelect.value;
     const filtered = getFilteredBooks(genre);
 
@@ -108,13 +131,15 @@ document.getElementById("spinBtn").addEventListener("click", () => {
         return;
     }
 
-    let spinInterval;
     let spinCount = 0;
 
-    const finalBook = filtered[Math.floor(Math.random() * filtered.length)];
+    const finalBook =
+        filtered[Math.floor(Math.random() * filtered.length)];
 
-    spinInterval = setInterval(() => {
-        const randomBook = filtered[Math.floor(Math.random() * filtered.length)];
+    const spinInterval = setInterval(() => {
+
+        const randomBook =
+            filtered[Math.floor(Math.random() * filtered.length)];
 
         result.innerHTML = `
             <div class="card">
@@ -126,19 +151,46 @@ document.getElementById("spinBtn").addEventListener("click", () => {
         spinCount++;
 
         if (spinCount > 20) {
+
             clearInterval(spinInterval);
 
             setTimeout(() => {
+
+                const isWishlisted =
+                    savedWishlist.includes(finalBook.title);
+
                 result.innerHTML = `
                     <div class="cardFinal">
-                        <h2> Your Pick</h2>
-                        <img src="${finalBook.image}" class="card-img-top book-img">
+                        <h2>Your Pick</h2>
+
+                        <img
+                            src="${finalBook.image}"
+                            class="card-img-top book-img"
+                            alt="${finalBook.title}"
+                        >
+
                         <h3>${finalBook.title}</h3>
                         <p>${finalBook.author}</p>
                         <p>${finalBook.fact}</p>
+
+                        <button id="wishlistBtn">
+                            ${isWishlisted
+                                ? "❤️ Remove from Wishlist"
+                                : "♡ Add To Wishlist"}
+                        </button>
                     </div>
                 `;
+
+                const wishlistBtn =
+                    document.getElementById("wishlistBtn");
+
+                wishlistBtn.addEventListener("click", () => {
+                    toggleWishlist(finalBook.title, wishlistBtn);
+                });
+
             }, 500);
         }
+
     }, 80);
+
 });
