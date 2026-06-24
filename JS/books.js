@@ -150,7 +150,7 @@ let books=[
   genre: "YA",
   image: "images/books/hungergames.jpg",
   synopsis: "A girl is forced into a televised fight to the death in a dystopian society.",
-  fact: "he story was inspired partly by ancient Roman gladiator games."
+  fact: "The story was inspired partly by ancient Roman gladiator games."
     },
 {
   id: 18,

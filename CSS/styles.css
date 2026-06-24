@@ -85,3 +85,9 @@ a{
     margin-top: 25px;
 }
 
+#searchBtn{
+  background-color: #3b2f22;
+   color: #d8c7a3;
+   margin-top: 5px;
+   border-radius: 8px;
+}
