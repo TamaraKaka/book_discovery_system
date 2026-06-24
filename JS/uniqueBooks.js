@@ -111,7 +111,6 @@ document.getElementById("spinBtn").addEventListener("click", () => {
     let spinInterval;
     let spinCount = 0;
 
-    // final book (true result)
     const finalBook = filtered[Math.floor(Math.random() * filtered.length)];
 
     spinInterval = setInterval(() => {
@@ -126,15 +125,14 @@ document.getElementById("spinBtn").addEventListener("click", () => {
 
         spinCount++;
 
-        // slowdown effect
         if (spinCount > 20) {
             clearInterval(spinInterval);
 
-            // final reveal after slight pause
             setTimeout(() => {
                 result.innerHTML = `
                     <div class="cardFinal">
                         <h2> Your Pick</h2>
+                        <img src="${finalBook.image}" class="card-img-top book-img">
                         <h3>${finalBook.title}</h3>
                         <p>${finalBook.author}</p>
                         <p>${finalBook.fact}</p>
