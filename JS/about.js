@@ -1,36 +1,36 @@
-const params = new URLSearchParams(window.location.search);
-const title = params.get("title");
+const parameters = new URLSearchParams(window.location.search);
+const bookTitle = parameters.get("title");
 
 const container = document.getElementById("bookContainer");
 
-document.title = title;
+document.title =  bookTitle;
 function normalize(str) {
   return str.trim().toLowerCase();
 }
-const book = books.find(book => normalize(book.title) === normalize(title));
+const book = books.find(book => normalize(book.title) === normalize( bookTitle));
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 const isWishlisted = wishlist.includes(book.title);
 
 function saveWishlist(){
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
 }
-function addToWishlist(title){
-    if(!wishlist.includes(title)){
-        wishlist.push(title);
+function addToWishlist( bookTitle){
+    if(!wishlist.includes( bookTitle)){
+        wishlist.push( bookTitle);
         saveWishlist();
     }
 }
-function toggleWishlist(title, button) {
-    if (wishlist.includes(title)) {
-        wishlist = wishlist.filter(b => b !== title);
+function toggleWishlist( bookTitle, button) {
+    if (wishlist.includes( bookTitle)) {
+        wishlist = wishlist.filter(b => b !==  bookTitle);
     } else {
-        wishlist.push(title);
+        wishlist.push( bookTitle);
     }
 
     saveWishlist();
 
     // re-check state after update
-    const isNowWishlisted = wishlist.includes(title);
+    const isNowWishlisted = wishlist.includes( bookTitle);
 
     button.textContent = isNowWishlisted
         ? "❤️ Remove from Wishlist"

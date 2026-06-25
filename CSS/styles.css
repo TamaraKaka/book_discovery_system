@@ -85,8 +85,14 @@ a{
     margin-top: 25px;
 }
 
-#searchBtn{
-  background-color: #3b2f22;
+button {
+  background-color: #5b4630;
+   color: #d8c7a3;
+   margin-top: 5px;
+   border-radius: 8px;
+}
+button a{
+  background-color: #5b4630;
    color: #d8c7a3;
    margin-top: 5px;
    border-radius: 8px;
