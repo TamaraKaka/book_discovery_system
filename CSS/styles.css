@@ -99,6 +99,7 @@ button a{
 }
 
 #contactForm{
+  text-align: center;
   border-radius: 8px;
   width: 80%;
   text-align: center;
