@@ -97,7 +97,7 @@ const genreSelect = document.getElementById("genreSelect");
 let savedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
 function saveWishlist() {
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    localStorage.setItem("savedWishlist", JSON.stringify(savedWishlist));
 }
 
 function toggleWishlist(title, button) {

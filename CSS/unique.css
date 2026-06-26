@@ -88,3 +88,9 @@ a{
     height: 350px;
     object-fit: cover;
 }
+button {
+  background-color: #5b4630;
+   color: #d8c7a3;
+   margin-top: 5px;
+   border-radius: 8px;
+}
