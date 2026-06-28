@@ -94,23 +94,22 @@ const uniqueBooks = [
 const result = document.getElementById("result");
 const genreSelect = document.getElementById("genreSelect");
 
-let savedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 function saveWishlist() {
-    localStorage.setItem("savedWishlist", JSON.stringify(savedWishlist));
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
 }
 
 function toggleWishlist(title, button) {
 
-    if (savedWishlist.includes(title)) {
-        savedWishlist = savedWishlist.filter(bookTitle => bookTitle !== title);
+    if (wishlist.includes(title)) {
+        wishlist = wishlist.filter(bookTitle => bookTitle !== title);
     } else {
-        savedWishlist.push(title);
+        wishlist.push(title);
     }
 
     saveWishlist();
 
-    const isWishlisted = savedWishlist.includes(title);
+    const isWishlisted = wishlist.includes(title);
 
     button.textContent = isWishlisted
         ? "❤️ Remove from Wishlist"
@@ -157,7 +156,7 @@ document.getElementById("spinBtn").addEventListener("click", () => {
             setTimeout(() => {
 
                 const isWishlisted =
-                    savedWishlist.includes(finalBook.title);
+                    wishlist.includes(finalBook.title);
 
                 result.innerHTML = `
                     <div class="cardFinal">
