@@ -3,43 +3,46 @@ const bookTitle = parameters.get("title");
 
 const container = document.getElementById("bookContainer");
 
-document.title =  bookTitle;
-function normalize(str) {
-  return str.trim().toLowerCase();
-}
-const allBooks = [...books, ...uniqueBooks];
+document.title = bookTitle;
 
-const book = allBooks.find(book =>
+function normalize(str) {
+    return str.trim().toLowerCase();
+}
+
+const book = books.find(book =>
     normalize(book.title) === normalize(bookTitle)
 );
+
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 const isWishlisted = wishlist.includes(book.title);
 
-function saveWishlist(){
+function saveWishlist() {
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
 }
-function addToWishlist( bookTitle){
-    if(!wishlist.includes( bookTitle)){
-        wishlist.push( bookTitle);
+
+function addToWishlist(bookTitle) {
+    if (!wishlist.includes(bookTitle)) {
+        wishlist.push(bookTitle);
         saveWishlist();
     }
 }
-function toggleWishlist( bookTitle, button) {
-    if (wishlist.includes( bookTitle)) {
-        wishlist = wishlist.filter(b => b !==  bookTitle);
+
+function toggleWishlist(bookTitle, button) {
+    if (wishlist.includes(bookTitle)) {
+        wishlist = wishlist.filter(b => b !== bookTitle);
     } else {
-        wishlist.push( bookTitle);
+        wishlist.push(bookTitle);
     }
 
     saveWishlist();
 
-    // re-check state after update
-    const isNowWishlisted = wishlist.includes( bookTitle);
+    const isNowWishlisted = wishlist.includes(bookTitle);
 
     button.textContent = isNowWishlisted
         ? "❤️ Remove from Wishlist"
         : "♡ Add To Wishlist";
 }
+
 container.innerHTML = `
 <div class="book-container">
     <img src="${book.image}" alt="${book.title}">
@@ -55,16 +58,18 @@ container.innerHTML = `
         <p>${book.fact}</p>
 
         <button id="wishlistBtn">
-        ${isWishlisted ? "❤️ Remove from Wishlist" : "♡ Add To Wishlist"}
+            ${isWishlisted ? "❤️ Remove from Wishlist" : "♡ Add To Wishlist"}
         </button>
     </div>
 </div>
 `;
+
 const wishlistBtn = document.getElementById("wishlistBtn");
 
 wishlistBtn.addEventListener("click", () => {
     toggleWishlist(book.title, wishlistBtn);
 });
+
 document.getElementById("backBtn").addEventListener("click", () => {
     window.history.back();
 });

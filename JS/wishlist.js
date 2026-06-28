@@ -21,8 +21,8 @@ if (wishlistBooks.length === 0) {
             <div class="card-body">
                 <h6 class="card-title">${book.title}</h6>
             </div>
-        </div>
+        </div><br>
         </a>
-    </div>
+    </div><br>
 `).join("");
 }
