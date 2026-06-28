@@ -7,7 +7,11 @@ document.title =  bookTitle;
 function normalize(str) {
   return str.trim().toLowerCase();
 }
-const book = books.find(book => normalize(book.title) === normalize( bookTitle));
+const allBooks = [...books, ...uniqueBooks];
+
+const book = allBooks.find(book =>
+    normalize(book.title) === normalize(bookTitle)
+);
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 const isWishlisted = wishlist.includes(book.title);
 
