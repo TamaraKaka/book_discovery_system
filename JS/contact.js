@@ -16,6 +16,7 @@ form.addEventListener("submit", function(event) {
     setTimeout(() => {
         form.reset();
         document.getElementById("message").textContent = "";
+         count.textContent = `${bio.value.length}/200`;
     }, 2000);
 });
 form.addEventListener("submit", function(event) {
